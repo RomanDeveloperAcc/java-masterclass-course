@@ -1,0 +1,9 @@
+### IntelliJ IDEA ###
+.idea
+
+### IntelliJ IDEA subdirectories ###
+
+/**/*.iws
+/**/*.iml
+/**/*.ipr
+/**/out/
