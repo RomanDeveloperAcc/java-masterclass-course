@@ -18,9 +18,9 @@ public class Main {
             Statement statement = connection.createStatement();
             statement.execute("drop table if exists " + TABLE_NAME);
             statement.execute("create table if not exists " + TABLE_NAME + " (" + NAME_COLUMN + " text, " + PHONE_COLUMN + " integer, " + EMAIL_COLUMN + " text)");
-//            statement.execute("insert into contacts values ('John', 6545678, 'john@email.com')");
-//            statement.execute("insert into contacts values ('Bob', 1234567, 'bob@email.com')");
-//            statement.execute("insert into contacts values ('Richard', 7654321, 'richard@email.com')");
+            statement.execute("insert into contacts values ('John', 6545678, 'john@email.com')");
+            statement.execute("insert into contacts values ('Bob', 1234567, 'bob@email.com')");
+            statement.execute("insert into contacts values ('Richard', 7654321, 'richard@email.com')");
 
 //            statement.execute("delete from contacts where name = 'John'");
 
