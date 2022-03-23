@@ -3,35 +3,37 @@ package rbd.project;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 
 public class Main {
 
     public static void main(String[] args) {
         try {
-            // copy
-//            Path sourceFile = FileSystems.getDefault().getPath("Examples", "file1.txt");
-//            Path copyFile = FileSystems.getDefault().getPath("Examples", "file1copy.txt");
-//            Files.copy(sourceFile, copyFile, StandardCopyOption.REPLACE_EXISTING); // replace existing prevents errors if file exists
-//
-//            sourceFile = FileSystems.getDefault().getPath("Examples", "dir1");
-//            copyFile = FileSystems.getDefault().getPath("Examples", "dir4");
-//            Files.copy(sourceFile, copyFile, StandardCopyOption.REPLACE_EXISTING);
+//            Path fileToCreate = FileSystems.getDefault().getPath("Examples", "file2.txt");
+//            Files.createFile(fileToCreate);
 
-            // move
-//            Path fileToMove = FileSystems.getDefault().getPath("Examples", "file1copy.txt");
-//            Path destination = FileSystems.getDefault().getPath("Examples", "dir1", "file1copy.txt");
-//
-//            Files.move(fileToMove, destination);
+//            Path dirToCreate = FileSystems.getDefault().getPath("Examples", "dir4");
+//            Files.createDirectory(dirToCreate);
 
-            // rename
-//            Path fileToMove = FileSystems.getDefault().getPath("Examples", "file1.txt");
-//            Path destination = FileSystems.getDefault().getPath("Examples", "file1.txt");
-//
-//            Files.move(fileToMove, destination);
+//            Path dirToCreate = FileSystems.getDefault().getPath("Examples", "dir2/dir3/dir4/dir5/dir6");
+//            Files.createDirectories(dirToCreate);
 
-            // delete
-            Path fileToDelete = FileSystems.getDefault().getPath("Examples", "dir1", "file1copy.txt");
-            Files.deleteIfExists(fileToDelete);
+//            Path dirToCreate = FileSystems.getDefault().getPath("Examples/dir2/dir3/dir4/dir5/dir6/dir7");
+//            Files.createDirectories(dirToCreate);
+
+            Path filePath = FileSystems.getDefault().getPath("Examples", "dir1/file1.txt");
+            long size = Files.size(filePath);
+            System.out.println(size);
+            System.out.println(Files.getLastModifiedTime(filePath));
+
+            BasicFileAttributes attributes = Files.readAttributes(filePath, BasicFileAttributes.class);
+            System.out.println(attributes.size());
+            System.out.println(attributes.lastModifiedTime());
+            System.out.println(attributes.creationTime());
+            System.out.println(attributes.isDirectory());
+            System.out.println(attributes.isRegularFile());
+//            Path fileToDelete = FileSystems.getDefault().getPath("Examples", "dir1", "file1copy.txt");
+//            Files.deleteIfExists(fileToDelete);
         } catch (IOException e) {
             e.printStackTrace();
         }
