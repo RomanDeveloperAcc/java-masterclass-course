@@ -52,5 +52,22 @@ public class Main {
         for (Path path : rootPaths) {
             System.out.println(path);
         }
+
+        System.out.println("==========WALKING TREE FOR DIR2=============");
+        Path dir2Path = FileSystems.getDefault().getPath("FileTree" + File.separator + "Dir2");
+        try {
+            Files.walkFileTree(dir2Path, new PrintNames());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("==========COPY DIR2 to DIR4/DIR2COPY=============");
+        Path copyPath = FileSystems.getDefault().getPath("FileTree" + File.separator + "Dir4" + File.separator + "Dir2Copy");
+        try {
+            Files.walkFileTree(dir2Path, new CopyFiles(dir2Path, copyPath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
